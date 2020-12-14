@@ -4,6 +4,7 @@
 #include<iostream>
 #include<string>
 #include <vector>
+#include <fstream>
 #include "json.hpp"
 
 using json = nlohmann::json;
@@ -152,6 +153,12 @@ private:
              cout << "to_node_id: " << t_node[j]<<endl;
              J["from_node_id"] = t_node[0];
              J["to_node_id"] = t_node[j];
+             ofstream os;
+             os.open("test.json",ios::out | ios::app);
+             os<< J <<endl;
+             os.close();
+             
+
          }
 
      }
