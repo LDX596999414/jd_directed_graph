@@ -4,8 +4,18 @@
 #include<iostream>
 #include<string>
 #include <vector>
+#include "json.hpp"
 
+using json = nlohmann::json;
 using namespace std;
+
+struct node{
+int val ;
+node* next = nullptr;
+node(int val, node* next):val(val), next(next){};
+};
+vector<node> node_list;
+
 
 class directed_graph{
 public:
@@ -105,16 +115,51 @@ public:
         }
     }
 
+vector<int> write_node_connectivity(int id){
+         vector<int>res_node;
+          for(auto & i : node_list){
+              if(i.val == id){
+                  res_node.push_back(i.val);
+                  node* ptr = i.next;
+                  while(ptr != nullptr){
+                    //TODO:
+                    res_node.push_back(ptr->val);
+                      ptr= ptr->next;
+                  }
+              }
+          }
+    return res_node;
+    }
+
 private:
     int node_num = 0;
-    struct node{
-    int val ;
-    node* next = nullptr;
-    node(int val, node* next):val(val), next(next){};
-    };
-    vector<node> node_list;
+
 
 };
+
+
+ void writeFileJson(){
+
+     directed_graph dp;
+     for(int i = 0; i < 100; i++){
+        // dp.write_node_connectivity(1);
+        vector<int> t_node = dp.write_node_connectivity(i);
+        //其他的数据子在这写入
+        for(int j = 1; j < t_node.size();j++){
+             //TODO:这里写入json；
+             json J;
+             cout << "from_node_id: " << t_node[0]<<" ";
+             cout << "to_node_id: " << t_node[j]<<endl;
+             J["from_node_id"] = t_node[0];
+             J["to_node_id"] = t_node[j];
+         }
+
+     }
+
+
+ }
+
+
 
 
 
@@ -144,9 +189,9 @@ int main(){
    dp->creat_edge(5,4);
    dp->creat_edge(5,3);
    dp->creat_edge(3,5);
-
-   dp->del_node(3);
+//   dp->del_node(3);
    dp->push_node();
+   writeFileJson();
 
     return 0;
 }
