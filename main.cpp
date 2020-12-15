@@ -21,7 +21,7 @@ vector<node> node_list;
 class directed_graph{
 public:
 
-    void creat_node(){
+    static void creat_node(){
         node t_node = {node_num, nullptr};
         //auto n = new node(1, nullptr);  // 为啥不能放到vec中
        // cout << "node_num:" << node_num <<endl;
@@ -135,7 +135,7 @@ static vector<int> write_node_connectivity(int id){
     }
 
 private:
-    int node_num = 0;
+    static int node_num ;
     static void find_node(int n_num, int next_num){  //因为是选择框所有不会存在找不到；
         bool find_n_num = false;
         bool find_next_num = false;
@@ -156,6 +156,7 @@ private:
     }
 };
 
+int directed_graph::node_num = 0;
 
  void writeFileJson(){
 
@@ -194,13 +195,13 @@ private:
 
 int main(){
 
-   auto dp = new directed_graph();
-   dp->creat_node();
-   dp->creat_node();
-   dp->creat_node();
-   dp->creat_node();
-   dp->creat_node();
-   dp->creat_node();
+
+   directed_graph::creat_node();
+   directed_graph::creat_node();
+   directed_graph::creat_node();
+   directed_graph::creat_node();
+   directed_graph::creat_node();
+   directed_graph::creat_node();
 
    directed_graph::creat_edge(0,1);
    directed_graph::creat_edge(0,2);
@@ -215,7 +216,7 @@ int main(){
    directed_graph::creat_edge(5,4);
    directed_graph::creat_edge(5,3);
    directed_graph::creat_edge(3,5);
-   
+
 //   dp->del_node(3);
    directed_graph::del_edge(0,3);
    directed_graph::push_node();
