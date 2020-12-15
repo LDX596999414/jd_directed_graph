@@ -217,8 +217,8 @@ int main(){
    directed_graph::creat_edge(5,3);
    directed_graph::creat_edge(3,5);
 
-//   dp->del_node(3);
-   directed_graph::del_edge(0,3);
+//   directed_graph::del_node(3);
+//   directed_graph::del_edge(0,1);
    directed_graph::push_node();
    writeFileJson();
 
