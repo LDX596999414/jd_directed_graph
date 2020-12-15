@@ -4,7 +4,19 @@
             "cost": 1,
             "from_node_id": 0,
             "id": "TODO",
+            "to_node_id": 1
+        },
+        {
+            "cost": 1,
+            "from_node_id": 0,
+            "id": "TODO",
             "to_node_id": 2
+        },
+        {
+            "cost": 1,
+            "from_node_id": 0,
+            "id": "TODO",
+            "to_node_id": 3
         },
         {
             "cost": 1,
@@ -20,15 +32,51 @@
         },
         {
             "cost": 1,
+            "from_node_id": 2,
+            "id": "TODO",
+            "to_node_id": 3
+        },
+        {
+            "cost": 1,
+            "from_node_id": 3,
+            "id": "TODO",
+            "to_node_id": 0
+        },
+        {
+            "cost": 1,
+            "from_node_id": 3,
+            "id": "TODO",
+            "to_node_id": 4
+        },
+        {
+            "cost": 1,
+            "from_node_id": 3,
+            "id": "TODO",
+            "to_node_id": 5
+        },
+        {
+            "cost": 1,
             "from_node_id": 4,
             "id": "TODO",
             "to_node_id": 2
         },
         {
             "cost": 1,
+            "from_node_id": 4,
+            "id": "TODO",
+            "to_node_id": 3
+        },
+        {
+            "cost": 1,
             "from_node_id": 5,
             "id": "TODO",
             "to_node_id": 4
+        },
+        {
+            "cost": 1,
+            "from_node_id": 5,
+            "id": "TODO",
+            "to_node_id": 3
         }
     ],
     "node": [
