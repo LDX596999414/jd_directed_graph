@@ -94,12 +94,12 @@ clean: CMakeFiles/jd_directed_graph.dir/clean
 CMakeFiles/jd_directed_graph.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/jd_directed_graph.dir/build.make CMakeFiles/jd_directed_graph.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/jd_directed_graph.dir/build.make CMakeFiles/jd_directed_graph.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/ldx/CLionProjects/jd_directed_graph/cmake-build-debug/CMakeFiles --progress-num=1,2 "Built target jd_directed_graph"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/ldx/CLionProjects/jd_directed_graph/cmake-build-debug/CMakeFiles --progress-num=1,2,3 "Built target jd_directed_graph"
 .PHONY : CMakeFiles/jd_directed_graph.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/jd_directed_graph.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ldx/CLionProjects/jd_directed_graph/cmake-build-debug/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ldx/CLionProjects/jd_directed_graph/cmake-build-debug/CMakeFiles 3
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/jd_directed_graph.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ldx/CLionProjects/jd_directed_graph/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/jd_directed_graph.dir/rule

@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/jd_directed_graph.dir/directed_graph.cpp.o"
   "CMakeFiles/jd_directed_graph.dir/main.cpp.o"
   "jd_directed_graph"
   "jd_directed_graph.pdb"

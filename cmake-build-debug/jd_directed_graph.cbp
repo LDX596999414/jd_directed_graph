@@ -80,6 +80,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/ldx/CLionProjects/jd_directed_graph/directed_graph.cpp">
+			<Option target="jd_directed_graph"/>
+		</Unit>
+		<Unit filename="/Users/ldx/CLionProjects/jd_directed_graph/directed_graph.h">
+			<Option target="jd_directed_graph"/>
+		</Unit>
 		<Unit filename="/Users/ldx/CLionProjects/jd_directed_graph/main.cpp">
 			<Option target="jd_directed_graph"/>
 		</Unit>

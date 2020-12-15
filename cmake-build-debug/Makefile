@@ -143,6 +143,33 @@ jd_directed_graph/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/jd_directed_graph.dir/build.make CMakeFiles/jd_directed_graph.dir/build
 .PHONY : jd_directed_graph/fast
 
+directed_graph.o: directed_graph.cpp.o
+
+.PHONY : directed_graph.o
+
+# target to build an object file
+directed_graph.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/jd_directed_graph.dir/build.make CMakeFiles/jd_directed_graph.dir/directed_graph.cpp.o
+.PHONY : directed_graph.cpp.o
+
+directed_graph.i: directed_graph.cpp.i
+
+.PHONY : directed_graph.i
+
+# target to preprocess a source file
+directed_graph.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/jd_directed_graph.dir/build.make CMakeFiles/jd_directed_graph.dir/directed_graph.cpp.i
+.PHONY : directed_graph.cpp.i
+
+directed_graph.s: directed_graph.cpp.s
+
+.PHONY : directed_graph.s
+
+# target to generate assembly for a file
+directed_graph.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/jd_directed_graph.dir/build.make CMakeFiles/jd_directed_graph.dir/directed_graph.cpp.s
+.PHONY : directed_graph.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -179,6 +206,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... jd_directed_graph"
+	@echo "... directed_graph.o"
+	@echo "... directed_graph.i"
+	@echo "... directed_graph.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
