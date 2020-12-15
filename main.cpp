@@ -29,24 +29,9 @@ public:
         node_num++;
     }
 
-    void creat_edge(int n_num, int next_num){   //TODO：如果把边删除掉了怎么处理？
-        bool find_n_num = false;
-        bool find_next_num = false;
-        for(auto & x : node_list){
-            if(x.val == n_num ){
-                find_n_num = true;
-                break;
-            }
-        }
-        for(auto & x : node_list){
-            if(x.val == next_num){
-                find_next_num = true;
-                break;
-            }
-        }
-        if(!find_n_num) cout << "没有发现"<<n_num<<"节点，无法创建连接"<<endl;
-        if(!find_next_num) cout << "没有发现"<<next_num<<"节点，无法创建连接"<<endl;
+    static void creat_edge(int n_num, int next_num){
 
+        find_node(n_num, next_num);
 
         if(node_list[n_num].next == nullptr){
             node_list[n_num].next = new node(next_num, nullptr);
@@ -61,16 +46,33 @@ public:
 
     }
 
-    void del_node(int n_num){   // 遍历所有节点，并利用双指针删除节点；
-//        for(auto it=node_list.begin();it!=node_list.end();){
-//            node t = *it;
-//            if(t.val == n_num){
-//                it = node_list.erase(it);
-//            } else{
-//                ++it;
-//            }
-//
-//        }
+    static void del_edge(int n_num, int next_num){
+        find_node(n_num, next_num);
+        for(auto & x :node_list){
+            if(x.val == n_num && x.next != nullptr){
+                node* p = node_list[n_num].next;
+                node* p_back = p->next;  //可能为空；
+                if(p->val == next_num){
+                    x.next = x.next->next;
+                    break;
+                } else{
+                    while(p_back != nullptr){
+                        if(p_back->val == next_num){
+                            p->next = p->next->next;
+                            break;
+                        }
+                        p = p->next;
+                        p_back = p_back->next;
+                    }
+                }
+
+            }
+        }
+
+
+    }
+
+    static void del_node(int n_num){   // 遍历所有节点，并利用双指针删除节点；
 
         for(auto &x : node_list){
             if(x.val == n_num){
@@ -104,7 +106,7 @@ public:
         }
     }
 
-    void push_node(){
+    static void push_node(){
         for(auto & i : node_list){
                 cout << i.val;
                 node* ptr = i.next;
@@ -116,7 +118,7 @@ public:
         }
     }
 
-vector<int> write_node_connectivity(int id){
+static vector<int> write_node_connectivity(int id){
          vector<int>res_node;
           for(auto & i : node_list){
               if(i.val == id){
@@ -134,40 +136,61 @@ vector<int> write_node_connectivity(int id){
 
 private:
     int node_num = 0;
-
-
+    static void find_node(int n_num, int next_num){  //因为是选择框所有不会存在找不到；
+        bool find_n_num = false;
+        bool find_next_num = false;
+        for(auto & x : node_list){
+            if(x.val == n_num ){
+                find_n_num = true;
+                break;
+            }
+        }
+        for(auto & x : node_list){
+            if(x.val == next_num){
+                find_next_num = true;
+                break;
+            }
+        }
+        if(!find_n_num) cout << "没有发现"<<n_num<<"节点，无法创建连接"<<endl;
+        if(!find_next_num) cout << "没有发现"<<next_num<<"节点，无法创建连接"<<endl;
+    }
 };
 
 
  void writeFileJson(){
 
-     directed_graph dp;
-     for(int i = 0; i < 100; i++){
-        // dp.write_node_connectivity(1);
-        vector<int> t_node = dp.write_node_connectivity(i);
-        //其他的数据子在这写入
+     //directed_graph dp;
+     json  root, line , array_line, point, array_point;
+
+     for(int i = 0; i < 100; i++){  //TODO: i = id;
+          // 其他信息写在这里？
+          point["id"] = i;
+          point["x"] =  i;
+          point["y"] =  i;
+          array_point.push_back(point);
+
+        vector<int> t_node = directed_graph::write_node_connectivity(i);
         for(int j = 1; j < t_node.size();j++){
              //TODO:这里写入json；
-             json J;
              cout << "from_node_id: " << t_node[0]<<" ";
              cout << "to_node_id: " << t_node[j]<<endl;
-             J["from_node_id"] = t_node[0];
-             J["to_node_id"] = t_node[j];
-             ofstream os;
-             os.open("test.json",ios::out | ios::app);
-             os<< J <<endl;
-             os.close();
-             
 
-         }
+             line["id"] = "TODO";
+             line["cost"] = 1;
+             line["from_node_id"] = t_node[0];
+             line["to_node_id"] = t_node[j];
+             array_line.push_back(line);
+        }
 
      }
 
-
+    root["line"] = array_line;
+     root["node"] = array_point;
+    ofstream os;
+    os.open("test.json",ios::out );
+    os<< root.dump(4)<<endl;
+    os.close();
  }
-
-
-
 
 
 int main(){
@@ -180,23 +203,23 @@ int main(){
    dp->creat_node();
    dp->creat_node();
 
+   directed_graph::creat_edge(0,1);
+   directed_graph::creat_edge(0,2);
+   directed_graph::creat_edge(0,3);
+   directed_graph::creat_edge(1,2);
+   directed_graph::creat_edge(2,0);
+   directed_graph::creat_edge(2,3);
+   directed_graph::creat_edge(3,0);
+   directed_graph::creat_edge(3,4);
+   directed_graph::creat_edge(4,2);
+   directed_graph::creat_edge(4,3);
+   directed_graph::creat_edge(5,4);
+   directed_graph::creat_edge(5,3);
+   directed_graph::creat_edge(3,5);
 
 
-   dp->creat_edge(0,1);
-    dp->creat_edge(0,2);
-     dp->creat_edge(0,3);
-
-   dp->creat_edge(1,2);
-   dp->creat_edge(2,0);
-   dp->creat_edge(2,3);
-   dp->creat_edge(3,0);
-   dp->creat_edge(3,4);
-   dp->creat_edge(4,2);
-   dp->creat_edge(4,3);
-   dp->creat_edge(5,4);
-   dp->creat_edge(5,3);
-   dp->creat_edge(3,5);
 //   dp->del_node(3);
+   dp->del_edge(0,3);
    dp->push_node();
    writeFileJson();
 
