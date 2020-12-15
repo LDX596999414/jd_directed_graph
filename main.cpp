@@ -159,7 +159,6 @@ private:
 
  void writeFileJson(){
 
-     //directed_graph dp;
      json  root, line , array_line, point, array_point;
 
      for(int i = 0; i < 100; i++){  //TODO: i = id;
@@ -216,11 +215,10 @@ int main(){
    directed_graph::creat_edge(5,4);
    directed_graph::creat_edge(5,3);
    directed_graph::creat_edge(3,5);
-
-
+   
 //   dp->del_node(3);
-   dp->del_edge(0,3);
-   dp->push_node();
+   directed_graph::del_edge(0,3);
+   directed_graph::push_node();
    writeFileJson();
 
     return 0;
