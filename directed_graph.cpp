@@ -123,14 +123,25 @@ void directed_graph::creat_edge(int n_num, int next_num) {
 
     find_node(n_num, next_num);
 
+
+
     if(node_list[n_num].next == nullptr){
         node_list[n_num].next = new node(next_num, nullptr);
     }else{  //尾插入法插入新的node；
-        node* p = node_list[n_num].next;
+        auto p = new node(-1,&node_list[n_num]);
+//                node_list[n_num].next;
         while(p->next != nullptr){
+            if(p->val  == next_num){
+                cout << next_num <<"已经存在"<<endl;
+                break;
+            }
             p = p->next;
+
         }
-        p->next = new node(next_num, nullptr);
+        if(p->val != next_num ){
+             p->next = new node(next_num, nullptr);
+        }
+
 
     }
 
@@ -165,7 +176,7 @@ void directed_graph::writeFileJson(){
     root["line"] = array_line;
     root["node"] = array_point;
     ofstream os;
-    os.open("test.json",ios::out );
+    os.open("test.json",ios::out |ios::trunc);
     os<< root.dump(4)<<endl;
     os.close();
  }

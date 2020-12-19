@@ -31,9 +31,10 @@ public:
     static void push_node();
     static vector<int> write_node_connectivity(int id);
     static void writeFileJson();
+    static int node_num ;
 
 private:
-    static int node_num ;
+
     static void find_node(int n_num, int next_num);
 };
 
